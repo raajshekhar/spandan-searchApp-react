@@ -1,0 +1,1 @@
+export {getListData,onDataUpdate} from './suggestionData';

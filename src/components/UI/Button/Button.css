@@ -1,0 +1,12 @@
+.Button {
+    cursor: pointer;
+    font: inherit;
+    padding: 10px;
+    margin: 10px;
+    font-weight: bold;
+    color: #5C9210;
+}
+
+.Button:first-of-type {
+    margin-left: 0;
+}
