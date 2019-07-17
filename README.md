@@ -1,8 +1,10 @@
 ## React search functionality
 
-** Implemented Search functionlity for the JSON data by title.
-** Provided user to select an entry from the results and have it populate in an edit form.
-** Where user can edit the data and save it in local store.
+** Implemented Search functionlity for the JSON data by title.<br>
+
+Provided user to select an entry from the results and have it populate in an edit form.<br>
+
+Where user can edit the data and save it in local store.<br>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
