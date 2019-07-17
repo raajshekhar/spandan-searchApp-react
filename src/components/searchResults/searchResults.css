@@ -9,6 +9,7 @@ ul {
     margin: 0 0 20px;
     border-bottom: 1px solid #ccc;
     padding: 0 0 20px;
+    border-radius: 3px;
   }
   li:hover{
     background: #ccc;
@@ -30,9 +31,43 @@ ul {
     width: 100%;
     font-weight: bolder;
   }
+  span::first-letter{
+    text-transform: capitalize;
+  }
+  span.index {
+    border-radius: 50%
+  }
 
  span.body {
     font-weight: normal;
-    font-style: italic;
+    line-height: 1.3em;
     color: #999;
+    margin-top: 5px;
   }
+
+  .iterateList li{
+    display: flex;
+    padding: 10px;
+    margin-bottom: 0px;
+  }
+
+  .iterateList li div:first-child{
+    flex: 1;
+    align-items: center;
+    margin-top: 5px;
+  }
+
+  .iterateList li div:last-child{
+    flex: 11;
+  }
+
+  .iterateList li div:first-child span {
+    width: 50px;
+    height: 50px;
+    background: #51adc8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    color: #fff;
+}

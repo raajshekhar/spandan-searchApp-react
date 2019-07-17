@@ -17,7 +17,10 @@ export const onDataUpdate = updateData => {
     }
 }
 
-
+/**
+ * getListData is to fetch the data from server 
+ * then check status and returns the json data
+ */
 export const getListData = () => {
     return dispatch => {
         fetch(url)

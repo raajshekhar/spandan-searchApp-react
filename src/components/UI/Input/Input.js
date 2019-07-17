@@ -1,5 +1,6 @@
 import React from 'react';
 import './Input.css'
+
 const input = (props) => {
 	let validationError = null;
 	const inputClasses =["InputElement"];
@@ -9,12 +10,12 @@ const input = (props) => {
 	}
 	return (
 		<div className="Input">
-			<label className="Label">{props.label}</label>
 			<input 
 				className={inputClasses.join(' ')} 
+				placeholder = {props.placeholder}
 				{...props.elementConfig} 
 				value={props.value} 
-				onChange={props.changed}
+				onChange={props.onChange }
 				onBlur={props.onBlur}/>
 			{validationError}
 		</div>

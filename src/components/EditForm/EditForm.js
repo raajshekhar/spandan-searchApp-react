@@ -3,6 +3,9 @@ import Input from '../UI/Input/Input'
 import Button from '../UI/Button/Button'
 import './EditForm.css'
 
+/**
+ * EditForm component contents the form to modify the selected data
+ */
 class EditForm extends Component {
 
     constructor(props){
@@ -52,7 +55,10 @@ class EditForm extends Component {
             listFields:[...requiredData]
         })
     }
-
+    /**
+     * changeHandler is called on change of text in input field 
+     * and update the state.
+     */
     changeHandler(event,index, touched = true){
         let val = event.target.value;
         let stateFields = [...this.state.listFields];
@@ -65,6 +71,9 @@ class EditForm extends Component {
             listFields:[...stateFields]
         })
     }
+    /**
+     * saveChanges is called on click of save button
+     */
     saveChanges() {
         let result = [...this.state.listFields];
         result = result.reduce((acc,list) => {
@@ -78,16 +87,13 @@ class EditForm extends Component {
         }
         this.props.updatedData(modifiedData)
     }
-    cancel() {
-
-    }
 
     render(){
         const listFields = [...this.state.listFields];
         return (
-            
-            <div class="editForm">
-                <div class="title">EDIT FORM</div>
+
+            <form className="editForm" onSubmit={(event) => event.preventDefault()}>
+                <div className="title">EDIT FORM</div>
                 {
                     listFields.map((field,index) => {
                         return (
@@ -96,15 +102,15 @@ class EditForm extends Component {
                                 value={field.value}
                                 inValid={field.inValid}
                                 touched={field.touched}
-                                changed={(event) => this.changeHandler(event,index)}
+                                onChange={(event) => this.changeHandler(event,index)}
                                 onBlur={(event) => this.changeHandler(event,index, false)}
                                 key={index}/>
                         )
                     })
                 }
-                <div><Button clicked={this.saveChanges}>Save</Button>
-                <Button clicked={this.props.cancel}>Cancel</Button></div>
-            </div>
+                <div><Button className="save-btn" clicked={this.saveChanges}>Save</Button>
+                <Button className="cancel-btn" clicked={this.props.cancel}>Cancel</Button></div>
+            </form>
         );
     }
 }

@@ -8,9 +8,13 @@ import * as serviceWorker from './serviceWorker';
 import suggestionData from './store/reducers/suggestionData';
 import thunk from 'redux-thunk';
 
+/**
+ * combined reducers will be used to implement different reducers for respective functionalities
+ */
 const reducer = combineReducers({
     suggestions: suggestionData
 });
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk))); 

@@ -1,5 +1,4 @@
 import React from "react";
-import logo from '../../logo.svg';
 import './searchResults.css'
 
 export default function searchResults({listData,clickHandler}){
@@ -10,7 +9,7 @@ export default function searchResults({listData,clickHandler}){
         iteratedList =  listData.map((data)=>displayItem(data,clickHandler))
     }
     return (
-        <ul>
+        <ul className="iterateList">
             {iteratedList}
         </ul>
       )
@@ -19,9 +18,13 @@ export default function searchResults({listData,clickHandler}){
 function displayItem({id, title, body},clickHandler){
     return (
         <li key={id} onClick={()=>clickHandler(id)}>
-            <img src={logo} alt="img"/>   
-            <span>{title}</span>
-            <span className="body">{body}</span>
+            <div>
+                <span className="index">{id}</span>
+            </div>   
+            <div>
+                <span>{title}</span>
+                <span className="body">{body}</span>
+            </div>
         </li>
     )
 }

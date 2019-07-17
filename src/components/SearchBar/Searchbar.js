@@ -2,12 +2,18 @@ import React, {Component} from 'react';
 import Input from '../UI/Input/Input';
 import './SearchBar.css'
 
+/**
+ * SearchBar component contains a input field with autocomplete functionality
+ */
 class SearchBar extends Component {
 	constructor(props) {
 		super(props);
 		this.findSearchData = this.findSearchData.bind(this);
 	}
-
+	
+	/**
+	 * findSearchData is called on change of data in search box
+	 */
 	findSearchData(event){
 		let value = event.target.value;
 		let data = [...this.props.searchData];
@@ -18,8 +24,8 @@ class SearchBar extends Component {
 
 	render() {
 		return (
-			<div class="searchBar">
-			<Input changed={this.findSearchData}/>	
+			<div className="searchBar">
+			<Input placeholder="Enter search keyword" onChange={this.findSearchData}/>	
 			</div>
 		)	
 	}

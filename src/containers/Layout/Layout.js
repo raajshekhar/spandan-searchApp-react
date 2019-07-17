@@ -6,6 +6,9 @@ import SearchResults from '../../components/searchResults/searchResults'
 import EditForm from '../../components/EditForm/EditForm'
 import './Layout.css'
 
+/**
+ * Layout is container which contains different components 
+ */
 class Layout extends Component {
     constructor(props){
         super(props);
@@ -13,12 +16,13 @@ class Layout extends Component {
         this.settingState = this.settingState.bind(this);
         this.modifiedData = this.modifiedData.bind(this);
         this.state = {
-            searchData: [],
+            searchData: [], //searched data will be stored in this array for sometime
             editForm: false,
             selectedItem: null,
             showResult: false
         }
     }
+
 
     settingState(data,showResult){
         this.setState({
@@ -33,6 +37,12 @@ class Layout extends Component {
         if(showResult) this.settingState(searchData,true)
     }
 
+    /**
+     * 
+     * @param {id} id is used to find result from store data which is unique id
+     * clickHandler is used to send data of selected item from search results
+     * to edit form
+     */
     clickHandler (id) {
         let requiredObj = [...this.state.searchData];
         requiredObj = requiredObj.find((list) => list.id === id);

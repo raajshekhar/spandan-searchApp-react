@@ -10,3 +10,6 @@
 .Button:first-of-type {
     margin-left: 0;
 }
+button:hover {
+    color: orange;
+}
