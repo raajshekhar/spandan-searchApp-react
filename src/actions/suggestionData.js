@@ -1,6 +1,5 @@
 import * as actionTypes from "../constants/actionTypes";
 
-const url = "http://jsonplaceholder.typicode.com/posts";
 
 const onDataSuccess = listData => {
     return {
@@ -23,12 +22,13 @@ export const onDataUpdate = updateData => {
  */
 export const getListData = () => {
     return dispatch => {
-        fetch(url)
+        fetch(window.location.href+'/posts.json')
         .then(response => {
             if(response.status === 200) return response.json();
             else return Promise.reject(response.json())
         }).then((response)=>{
-            dispatch(onDataSuccess(response))
+            const posts = response.posts;
+            dispatch(onDataSuccess(posts))
         })
         .catch(error => {
             return Promise.reject({error, status:error.statusText});
