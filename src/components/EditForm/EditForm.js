@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Input from '../UI/Input/Input'
 import Button from '../UI/Button/Button'
 import './EditForm.css'
-import Modal from '../UI/Modal/Modal';
 
 /**
  * EditForm component contents the form to modify the selected data
