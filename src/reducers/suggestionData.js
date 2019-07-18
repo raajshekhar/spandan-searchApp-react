@@ -1,4 +1,4 @@
-import * as actionTypes from "../actions/actionTypes"
+import * as actionTypes from "../constants/actionTypes"
 
 const initialState = {
     listData : [],
@@ -17,7 +17,6 @@ const reducer = (state = initialState, action) => {
             let listData = [...state.listData];
             listData[updateData.id - 1] = updateData;
             let modifiedData = { ...state, listData };
-            saveDataInSession(modifiedData)
             return modifiedData
             default:
                 return state;
@@ -26,7 +25,4 @@ const reducer = (state = initialState, action) => {
 }
 
 
-function saveDataInSession(data){
-    sessionStorage.setItem('task', JSON.stringify(data));
-}
 export default reducer;

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../../store/actions/index';
+import * as actions from '../../actions/index';
 import SearchBar from '../../components/SearchBar/Searchbar'
 import SearchResults from '../../components/searchResults/searchResults'
 import EditForm from '../../components/EditForm/EditForm'
 import './Layout.css'
-
+import SearchDetails from '../../components/SearchDetails/SearchDetails'
 /**
  * Layout is container which contains different components 
  */
@@ -18,11 +18,18 @@ class Layout extends Component {
         this.state = {
             searchData: [], //searched data will be stored in this array for sometime
             editForm: false,
+            showDetails: false,
             selectedItem: null,
-            showResult: false
+            showResult: false,
+            
         }
     }
 
+
+    componentWillReceiveProps(nextProps){
+        const { data } = {...nextProps};
+        this.settingState(data,true)
+    }
 
     settingState(data,showResult){
         this.setState({
@@ -43,14 +50,28 @@ class Layout extends Component {
      * clickHandler is used to send data of selected item from search results
      * to edit form
      */
+
     clickHandler (id) {
         let requiredObj = [...this.state.searchData];
         requiredObj = requiredObj.find((list) => list.id === id);
         this.setState(() => ({
                 ...this.state,
                 searchData: [requiredObj],
-                editForm: true
+                editForm: false,
+                showDetails: true
             }))
+    }
+    editDetails (id) {
+        let requiredObj = [...this.state.searchData];
+        requiredObj = requiredObj.find((list) => list.id === id);
+        this.setState(() => ({
+                ...this.state,
+                searchData: [requiredObj],
+                editForm: true,
+                showDetails: false
+            }))
+
+            console.log(this.state)
     }
 
     modifiedData () {
@@ -60,16 +81,17 @@ class Layout extends Component {
             ...this.state,
             searchData: [],
             editForm: false,
-            showResult: false
+            showResult: true
         }))
     }
 
     cancelEdit = () =>{
         this.setState(() => ({
             ...this.state,
-            searchData: [],
+            searchData: [...this.props.data],
             editForm: false,
-            showResult: false
+            showResult: true,
+            showDetails: false
         }))
     }
 
@@ -78,16 +100,20 @@ class Layout extends Component {
     }
 
     render(){
-        const {editForm} = {...this.state};
+        const {editForm, showResult, showDetails} = {...this.state};
         let searchOptions = (
             <div className="show--search--options">
                     <SearchBar resultData={this.searchResultData} searchData={this.props.data} ></SearchBar>
-                    {this.state.showResult ? <SearchResults clickHandler={(id)=>this.clickHandler(id)} listData={this.state.searchData} />: null}
+                    {
+                        showResult ? <SearchResults clickHandler={(id)=>this.clickHandler(id)} listData={this.state.searchData} /> : null
+                    }
             </div>
         );
         return (
             <section>
-                { editForm ? <EditForm cancel={this.cancelEdit} updatedData={this.modifiedData} data={this.state.searchData[0] } /> : searchOptions }                
+                { editForm &&  !showDetails ? null : searchOptions }
+                { showDetails ? <SearchDetails cancel={this.cancelEdit}  editDetails={(id)=>this.editDetails(id)} data={this.state.searchData}/> : null }
+                { editForm ? <EditForm cancel={this.cancelEdit} updatedData={this.modifiedData} data={this.state.searchData[0] } /> : null }                
             </section>
         )
     }

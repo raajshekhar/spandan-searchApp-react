@@ -23,7 +23,6 @@ function displayItem({id, title, body},clickHandler){
             </div>   
             <div>
                 <span>{title}</span>
-                <span className="body">{body}</span>
             </div>
         </li>
     )

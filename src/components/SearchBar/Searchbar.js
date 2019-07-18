@@ -10,7 +10,7 @@ class SearchBar extends Component {
 		super(props);
 		this.findSearchData = this.findSearchData.bind(this);
 	}
-	
+
 	/**
 	 * findSearchData is called on change of data in search box
 	 */
@@ -18,7 +18,7 @@ class SearchBar extends Component {
 		let value = event.target.value;
 		let data = [...this.props.searchData];
 		let result = data.filter((list) => list.title.includes(value));
-		if(!value.length) return this.props.resultData([],false)
+		if(!value.length) return this.props.resultData([...data],false)
 		this.props.resultData(result, value.length)
 	}
 

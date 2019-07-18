@@ -16,7 +16,8 @@ const input = (props) => {
 				{...props.elementConfig} 
 				value={props.value} 
 				onChange={props.onChange }
-				onBlur={props.onBlur}/>
+				onBlur={props.onBlur}
+				required/>
 			{validationError}
 		</div>
 	);

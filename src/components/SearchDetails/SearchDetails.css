@@ -1,0 +1,24 @@
+.details-modal{
+    border: 1px solid #ccc;
+    margin: 5px;
+    padding: 10px;
+}
+.d-flex {
+    display: flex;
+    text-align: left;
+    margin-bottom: 10px;
+}
+.d-flex span:last-child {
+    flex: 11;
+    margin-left:10px
+}
+.d-flex span:first-child {
+    flex: 1;
+}
+
+.d-flex:first-child {
+    margin-bottom: 10px;
+}
+.d-flex span{
+    line-height: 23px
+}

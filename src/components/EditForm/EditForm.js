@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Input from '../UI/Input/Input'
 import Button from '../UI/Button/Button'
 import './EditForm.css'
+import Modal from '../UI/Modal/Modal';
 
 /**
  * EditForm component contents the form to modify the selected data
@@ -14,24 +15,27 @@ class EditForm extends Component {
         this.saveChanges = this.saveChanges.bind(this);
     
         this.state = {
+            formValid: true,
             listFields:[
                 {
-                   value: '',
                    inValid: false,
                    touched: false,
                    elementConfig: {
                        type: "text",
                        placeholder: 'Title'
-                   }
+                   },
+                   value: '',
+                   title: 'Title'
                 },
                 {
-                   value: '',
+                    value: '',
                    inValid: false,
                    touched: false,
                    elementConfig: {
                        type: "text",
                        placeholder: 'Body'
-                   }
+                   },
+                   title: 'Body'
                }
            ]
         }
@@ -50,6 +54,7 @@ class EditForm extends Component {
             }
             return modifiedResult;
         })
+
         this.setState({
             ...this.state,
             listFields:[...requiredData]
@@ -62,15 +67,17 @@ class EditForm extends Component {
     changeHandler(event,index, touched = true){
         let val = event.target.value;
         let stateFields = [...this.state.listFields];
-        let inValid = Boolean(stateFields[index].value.length);
+        let inValid = Boolean(stateFields[index].value.trim().length);
         stateFields[index].value = val;
         stateFields[index].inValid = !inValid;
         stateFields[index].touched = touched;
         this.setState({
             ...this.state,
+            formValid: inValid,
             listFields:[...stateFields]
         })
     }
+
     /**
      * saveChanges is called on click of save button
      */
@@ -90,27 +97,32 @@ class EditForm extends Component {
 
     render(){
         const listFields = [...this.state.listFields];
+        const { formValid } = {...this.state};
         return (
+			
+                <form className="editForm" onSubmit={(event) => event.preventDefault()}>
+                    <h3 className="title">EDIT FORM</h3>
+                    {
+                        listFields.map((field,index) => {
+                            return (
+                                <div className="d-flex" key={index}>
+                                <label className="title">{`${field.title}`}:</label>
+                                <Input 
+                                    elementConfig={field.elementConfig}
+                                    value={field.value}
+                                    inValid={field.inValid}
+                                    touched={field.touched}
+                                    onChange={(event) => this.changeHandler(event,index)}
+                                    onBlur={(event) => this.changeHandler(event,index, false)}
+                                    />
+                                    </div>
+                            )
+                        })
+                    }
+                    <div><Button disabled={!formValid} className="save-btn"  clicked={this.saveChanges}>Save </Button>
+                    <Button className="cancel-btn" clicked={this.props.cancel}>Cancel</Button></div>
+                </form>
 
-            <form className="editForm" onSubmit={(event) => event.preventDefault()}>
-                <div className="title">EDIT FORM</div>
-                {
-                    listFields.map((field,index) => {
-                        return (
-                            <Input 
-                                elementConfig={field.elementConfig}
-                                value={field.value}
-                                inValid={field.inValid}
-                                touched={field.touched}
-                                onChange={(event) => this.changeHandler(event,index)}
-                                onBlur={(event) => this.changeHandler(event,index, false)}
-                                key={index}/>
-                        )
-                    })
-                }
-                <div><Button className="save-btn" clicked={this.saveChanges}>Save</Button>
-                <Button className="cancel-btn" clicked={this.props.cancel}>Cancel</Button></div>
-            </form>
         );
     }
 }

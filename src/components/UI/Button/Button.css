@@ -5,6 +5,7 @@
     margin: 10px;
     font-weight: bold;
     color: #5C9210;
+    border-radius: 3px;
 }
 
 .Button:first-of-type {

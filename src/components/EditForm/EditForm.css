@@ -1,9 +1,22 @@
 .editForm {
     width: 90%;
     border: 1px solid #ccc;
-    margin: 10px auto;
+    margin: 5% auto;
 }
 .title {
-    margin: 10px;
     font-weight: bold;
+}
+.d-flex {
+    display: flex;
+    text-align: left;
+    margin-bottom: 10px;
+    align-items: center;
+    margin-left: 10px;
+}
+.d-flex .Input {
+    flex: 25;
+}
+.d-flex label {
+    flex: 1;
+    margin-left: 10px;
 }

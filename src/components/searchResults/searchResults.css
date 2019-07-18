@@ -58,16 +58,16 @@ ul {
   }
 
   .iterateList li div:last-child{
-    flex: 11;
+    flex: 14;
+    padding-top: 10px;
   }
 
   .iterateList li div:first-child span {
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     background: #51adc8;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 10px;
     color: #fff;
 }

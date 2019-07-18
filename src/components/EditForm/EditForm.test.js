@@ -22,6 +22,6 @@ describe('Edit Form', () => {
     });
     it('form should have a className and title', () => {
         expect(wrapper.find('form').hasClass("editForm"));
-        expect(wrapper.find('.title').text()).toEqual('EDIT FORM');
+        expect(wrapper.find('h3').text()).toEqual('EDIT FORM');
     });
 });
