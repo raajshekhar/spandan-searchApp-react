@@ -54,45 +54,43 @@ class Layout extends Component {
     clickHandler (id) {
         let requiredObj = [...this.state.searchData];
         requiredObj = requiredObj.find((list) => list.id === id);
-        this.setState(() => ({
+        this.setState({
                 ...this.state,
                 searchData: [requiredObj],
                 editForm: false,
                 showDetails: true
-            }))
+            })
     }
     editDetails (id) {
         let requiredObj = [...this.state.searchData];
         requiredObj = requiredObj.find((list) => list.id === id);
-        this.setState(() => ({
+        this.setState({
                 ...this.state,
                 searchData: [requiredObj],
                 editForm: true,
                 showDetails: false
-            }))
-
-            console.log(this.state)
+            });
     }
 
     modifiedData () {
         let data = arguments[0]
         this.props.updateData(data);
-        this.setState(() => ({
+        this.setState({
             ...this.state,
             searchData: [],
             editForm: false,
             showResult: true
-        }))
+        })
     }
 
     cancelEdit = () =>{
-        this.setState(() => ({
+        this.setState({
             ...this.state,
             searchData: [...this.props.data],
             editForm: false,
             showResult: true,
             showDetails: false
-        }))
+        })
     }
 
     componentDidMount() {

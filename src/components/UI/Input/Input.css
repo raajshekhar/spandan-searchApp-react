@@ -1,15 +1,15 @@
-.Input {
+.input {
 	width: 100%;
 	padding: 10px;
 	box-sizing: border-box;
 }
 
-.Label {
+.label {
 	font-weight: bold;
 	display: block;
 	margin-bottom: 8px;
 }
-.InputElement {
+.input-element {
 	outline: none;
 	border: 1px solid #ccc;
 	background-color: #fff;
@@ -19,7 +19,6 @@
 	width: 100%;
 	box-sizing: border-box;
 }
-.Invalid {
+.invalid {
 	border: 1px solid red;
-	background-color: #FDA49A;
 }

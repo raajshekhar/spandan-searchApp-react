@@ -3,21 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { Provider } from 'react-redux';
-import {createStore, combineReducers, compose, applyMiddleware } from 'redux';
 import * as serviceWorker from './serviceWorker';
-import suggestionData from './store/reducers/suggestionData';
-import thunk from 'redux-thunk';
-
-/**
- * combined reducers will be used to implement different reducers for respective functionalities
- */
-const reducer = combineReducers({
-    suggestions: suggestionData
-});
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk))); 
+import store from './store/index'
 
 ReactDOM.render(
 <Provider store={store}>

@@ -25,7 +25,8 @@ class EditForm extends Component {
                        placeholder: 'Title'
                    },
                    value: '',
-                   title: 'Title'
+                   title: 'Title',
+                   error: '*Pease enter the title'
                 },
                 {
                     value: '',
@@ -35,7 +36,8 @@ class EditForm extends Component {
                        type: "text",
                        placeholder: 'Body'
                    },
-                   title: 'Body'
+                   title: 'Body',
+                   error: '*Pease enter the title'
                }
            ]
         }
@@ -70,7 +72,7 @@ class EditForm extends Component {
         let inValid = Boolean(stateFields[index].value.trim().length);
         stateFields[index].value = val;
         stateFields[index].inValid = !inValid;
-        stateFields[index].touched = touched;
+        stateFields[index].touched = true;
         this.setState({
             ...this.state,
             formValid: inValid,
@@ -114,7 +116,9 @@ class EditForm extends Component {
                                     touched={field.touched}
                                     onChange={(event) => this.changeHandler(event,index)}
                                     onBlur={(event) => this.changeHandler(event,index, false)}
+                                    errorMessage={field.error}
                                     />
+                                    
                                     </div>
                             )
                         })

@@ -1,8 +1,40 @@
-## React search functionality
+## React search app
 
-** Implemented Search functionality for the JSON data by title.<br>
+This Application includes a built-in prediction service, 
 
-Provided user to select an entry from the results and have it populate in an edit form.<br>
+** User can select an entry from the search results to get the details of it.<br>
 
-Where user can edit the data and save it in local store.<br>
+** User can edit the data in edit form and save it in local store.<br>
+
+## Built With
+
+* ES6
+* React.js
+* Redux
+* Axios.js
+
+## Main Files
+
+* [App](src/App.js)
+    * [Layout](src/container/Layout.js)
+    * [Details](src/components/SearchDetails)
+* [Configuration](src/index.js)
+* [Store](src/store)
+
+##Available Scripts
+
+In the project directory, you can run:
+
+npm start
+Runs the app in the development mode.
+
+The page will reload if you make edits.
+You will also see any lint errors in the console.
+
+npm test
+Launches the test runner in the interactive watch mode.
+
+npm run build
+Builds the app for production to the build folder.
+
 

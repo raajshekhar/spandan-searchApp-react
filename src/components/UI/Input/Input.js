@@ -3,13 +3,13 @@ import './Input.css'
 
 const input = (props) => {
 	let validationError = null;
-	const inputClasses =["InputElement"];
-	if(props.invalid && props.touched) {
-		inputClasses.push("Invalid");
-		validationError = <p>Please enter a valid value!</p>;
+	const inputClasses =["input-element"];
+	if(props.inValid && props.touched) {
+		inputClasses.push("invalid");
+		validationError = props.errorMessage;
 	}
 	return (
-		<div className="Input">
+		<div className="input">
 			<input 
 				className={inputClasses.join(' ')} 
 				placeholder = {props.placeholder}
@@ -18,7 +18,7 @@ const input = (props) => {
 				onChange={props.onChange }
 				onBlur={props.onBlur}
 				required/>
-			{validationError}
+			<div style={{marginLeft: '2.5rem', color:'red'}}>{ validationError }</div>
 		</div>
 	);
 	
